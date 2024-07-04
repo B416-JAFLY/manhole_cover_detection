@@ -31,12 +31,12 @@ def split_dataset(img_folder, lbl_folder, train_img_folder, val_img_folder, trai
     print("数据集划分完成。")
 
 # 示例用法
-img_folder = './data/images'  # 图片文件夹路径
-lbl_folder = './data/labels'  # 标签文件夹路径
+img_folder = '../images/images_cut/images'  # 图片文件夹路径
+lbl_folder = '../images/images_cut/labels'  # 标签文件夹路径
 
-train_img_folder = './data/images/train'  # 训练集图片文件夹路径
-val_img_folder = './data/images/val'  # 验证集图片文件夹路径
-train_lbl_folder = './data/labels/train'  # 训练集标签文件夹路径
-val_lbl_folder = './data/labels/val'  # 验证集标签文件夹路径
+train_img_folder = '../images/images_cut/images/train'  # 训练集图片文件夹路径
+val_img_folder = '../images/images_cut/images/val'  # 验证集图片文件夹路径
+train_lbl_folder = '../images/images_cut/train'  # 训练集标签文件夹路径
+val_lbl_folder = '../images/images_cut/val'  # 验证集标签文件夹路径
 
 split_dataset(img_folder, lbl_folder, train_img_folder, val_img_folder, train_lbl_folder, val_lbl_folder, split_ratio=0.9)
