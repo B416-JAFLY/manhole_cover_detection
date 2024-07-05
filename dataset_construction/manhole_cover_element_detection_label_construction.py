@@ -24,5 +24,5 @@ def process_files(directory):
             f.writelines(processed_lines)
 
 # 设置你要处理的目录路径
-directory_path = 'images/images_cut'
+directory_path = '../../images_dataset_yolo'
 process_files(directory_path)

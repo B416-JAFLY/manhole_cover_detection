@@ -4,7 +4,7 @@
 import os
 
 # 设置文件夹路径
-image_folder = './images/images_cut'
+image_folder = '../../images_dataset_yolo'
 
 # 获取文件夹中的所有文件
 files = os.listdir(image_folder)
