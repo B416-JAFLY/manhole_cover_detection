@@ -50,5 +50,5 @@ def process_directory(directory):
                 crop_and_save_image(image_path, label_path, directory)
 
 if __name__ == '__main__':
-    current_directory = '.'  # 当前目录
+    current_directory = '../../images_dataset_resnet'  
     process_directory(current_directory)

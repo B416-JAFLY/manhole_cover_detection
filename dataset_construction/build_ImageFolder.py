@@ -40,5 +40,5 @@ def process_folder(input_folder):
         print(f"{class_info}类有{count}个文件")
 
 if __name__ == '__main__':
-    folder_to_process = './images_element_recognized/1'  # 要处理的文件夹
+    folder_to_process = '../../images_dataset_resnet/1'  # 要处理的文件夹
     process_folder(folder_to_process)
