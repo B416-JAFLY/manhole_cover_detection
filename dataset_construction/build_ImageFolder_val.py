@@ -47,6 +47,6 @@ def split_dataset(input_folder, output_folder, train_ratio=0.9):
             print(f"由于图片不足，{class_name}类没有划分验证集")
 
 if __name__ == '__main__':
-    input_directory = '../../images_dataset_resnet/0'  # 要处理的文件夹
-    output_directory = '../../images_dataset_resnet_train/0'  # 输出文件夹
+    input_directory = '../../images_dataset_resnet/1'  # 要处理的文件夹
+    output_directory = '../../images_dataset_resnet_train/1'  # 输出文件夹
     split_dataset(input_directory, output_directory)

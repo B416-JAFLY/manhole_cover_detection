@@ -11,6 +11,8 @@ def rotate_images_in_directory(images_path):
     # 获取目录中的所有文件
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         
         # 读取图像
@@ -48,6 +50,8 @@ def rotate_images_in_directory(images_path):
 def translate_image(images_path, shift_x, shift_y):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = cv2.imread(image_path)
         rows, cols = image.shape[:2]
@@ -59,6 +63,8 @@ def translate_image(images_path, shift_x, shift_y):
 def scale_image(images_path, scale_factor):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = Image.open(image_path)
         new_size = (int(image.size[0] * scale_factor), int(image.size[1] * scale_factor))
@@ -69,6 +75,8 @@ def scale_image(images_path, scale_factor):
 def flip_image(images_path, direction):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = Image.open(image_path)
         if direction == 'horizontal':
@@ -81,6 +89,8 @@ def flip_image(images_path, direction):
 def crop_image(images_path, crop_area):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = Image.open(image_path)
         cropped_image = image.crop(crop_area)
@@ -90,6 +100,8 @@ def crop_image(images_path, crop_area):
 def color_jitter_image(images_path, brightness, contrast, saturation):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = Image.open(image_path)
         enhancer = ImageEnhance.Brightness(image)
@@ -104,6 +116,8 @@ def color_jitter_image(images_path, brightness, contrast, saturation):
 def add_noise_image(images_path, variance):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = cv2.imread(image_path)
         row, col, ch = image.shape
@@ -117,6 +131,8 @@ def add_noise_image(images_path, variance):
 def affine_transform_image(images_path, pts1, pts2):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = cv2.imread(image_path)
         rows, cols, ch = image.shape
@@ -128,6 +144,8 @@ def affine_transform_image(images_path, pts1, pts2):
 def gamma_correction_image(images_path, gamma):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = cv2.imread(image_path)
         if image is None:
@@ -147,6 +165,8 @@ def gamma_correction_image(images_path, gamma):
 def gaussian_blur_image(images_path, kernel_size):
     image_files = os.listdir(images_path)
     for image_file in image_files:
+        if len(os.listdir(images_path)) >= 500:
+            break
         image_path = os.path.join(images_path, image_file)
         image = cv2.imread(image_path)
         blurred_image = cv2.GaussianBlur(image, (kernel_size, kernel_size), 0)
@@ -157,7 +177,7 @@ def gaussian_blur_image(images_path, kernel_size):
 def process_directory(base_path):
 
     exclude_folders = [
-    "0-北京电信",
+    "0-北京",
 ]
     folders = os.listdir(base_path)
     
@@ -167,26 +187,31 @@ def process_directory(base_path):
             if os.path.isdir(images_path):
                 print(f"正在处理{folder}文件夹")
                 
-                # 旋转示例
-                # rotate_images_in_directory(images_path)
+                # 旋转示例*8
+                rotate_images_in_directory(images_path)
                 
-                # 颜色抖动示例
+                # 颜色抖动示例*2
                 color_jitter_image(images_path, 1.2, 1.5, 1.3)
                 
-                # 添加噪声示例
+                # 添加噪声示例*2
                 add_noise_image(images_path, 1600)
                 
-                # 伽马校正示例
+                # 伽马校正示例*3
                 gamma_correction_image(images_path, 2.0)
+                # 以上*96
 
+                # # 高斯模糊示例*2
+                gaussian_blur_image(images_path, 5)
 
+                # # 翻转示例*2
+                flip_image(images_path, 'horizontal')
 
 
 
 
 if __name__ == "__main__":
 
-    base_path = "../../images_dataset_resnet/00"
+    base_path = "../../images_dataset_resnet_train/1/train"
     process_directory(base_path)
 
 

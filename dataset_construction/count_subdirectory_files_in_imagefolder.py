@@ -12,7 +12,7 @@ import os
 # plt.rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
 
 # 假设你的根目录路径是 'path_to_root_directory'
-root_dir = '../../images_dataset_resnet/0'
+root_dir = '../../images_dataset_resnet_train/1/train'
 
 # 获取子目录
 subdirs = [d for d in os.listdir(root_dir) if os.path.isdir(os.path.join(root_dir, d))]
